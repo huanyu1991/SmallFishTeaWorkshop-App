@@ -1,4 +1,5 @@
 import React from 'react';
+import ListItem from './ListItem';
 
 class ListTest extends React.Component {
   constructor(props){
@@ -6,7 +7,11 @@ class ListTest extends React.Component {
     this.state={
       listItemSource:[],
       inputValue:''
-    }
+    };
+    this.addListItem=this.addListItem.bind(this);
+    this.inputValueChangeEvent=this.inputValueChangeEvent.bind(this);
+    //this.getSelectItemIndex=this.getSelectItemIndex.bind(this);
+    
   }
   addListItem(){
     this.setState({
@@ -14,30 +19,38 @@ class ListTest extends React.Component {
       inputValue:''
     })
 }
-  deleteSelectVlaue(index){
-    console.log(index);
+  deleteSelectValue(index){
+    //console.log(index);
     const listItemSource=[...this.state.listItemSource];
     listItemSource.splice(index,1);
     this.setState({listItemSource})
 }
-inputValueChangeEvent(e){
-  this.setState({
-    inputValue:e.target.value
-  })
+  inputValueChangeEvent(e){
+    this.setState({
+      inputValue:e.target.value
+    })
 }
+  getSelectItemIndex(index){
+    console.log(index);
+  }
+//父组件通过子组件属性向子控件传值，子组件通过props接收父组件传递过来的值
   render()
   {
   return (
     <div>
       <div>
-        <input value={this.state.inputValue} onChange={this.inputValueChangeEvent.bind(this)}></input>
-        <button onClick={this.addListItem.bind(this)}>add</button>
+        <input value={this.state.inputValue} onChange={this.inputValueChangeEvent}></input>
+        <button onClick={this.addListItem}>add</button>
       </div>
       <ul>
       {
         this.state.listItemSource.map((item,index)=>{
           console.log(index);
-          return <li key={index} onClick={this.deleteSelectVlaue.bind(this,index)} >{item}</li>
+          return <ListItem content={item} 
+          getSelectIndex={this.getSelectItemIndex.bind(this)} 
+          deleteListItem={this.deleteSelectValue.bind(this,index)} 
+          key={index}/>
+          // return <li key={index} onClick={this.deleteSelectVlaue.bind(this,index)} >{item}</li>
         })}
       </ul>
     </div>
