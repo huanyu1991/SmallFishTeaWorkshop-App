@@ -53,6 +53,7 @@ class ListTest extends React.Component {
           // return <li key={index} onClick={this.deleteSelectVlaue.bind(this,index)} >{item}</li>
         })}
       </ul>
+      
     </div>
   );
 }
