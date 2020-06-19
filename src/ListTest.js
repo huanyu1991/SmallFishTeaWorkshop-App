@@ -51,7 +51,7 @@ class ListTest extends React.Component {
   //       };
   //     }
   // };
-alert(object.getNameFunc()()); //"The Window"（在非严格模式下）
+//alert(object.getNameFunc()()); //"The Window"（在非严格模式下）
   
      
       
