@@ -36,6 +36,26 @@ class ListTest extends React.Component {
 //父组件通过子组件属性向子控件传值，子组件通过props接收父组件传递过来的值
   render()
   {
+    var thischangestr="nihaoa ";
+    var Func=function() {
+      console.log(thischangestr);
+      //var thischangestr="nihaoa ";
+    };
+    
+  //   var name = "The Window";
+  //   var object = {
+  //     name : "My Object",
+  //     getNameFunc : function(){
+  //     return function(){
+  //       return this.name;
+  //       };
+  //     }
+  // };
+alert(object.getNameFunc()()); //"The Window"（在非严格模式下）
+  
+     
+      
+    
   return (
     <div>
       <div>
